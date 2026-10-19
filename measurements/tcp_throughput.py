@@ -29,7 +29,8 @@ def send(host: str, port: int, seconds: float) -> None:
     sent = 0
     t0 = time.perf_counter()
     while time.perf_counter() - t0 < seconds:
-        s.sendall(buf); sent += len(buf)
+        s.sendall(buf)
+        sent += len(buf)
     elapsed = time.perf_counter() - t0
     s.close()
     print(json.dumps({"bytes": sent, "seconds": round(elapsed, 2),
