@@ -29,6 +29,7 @@ mesh-vpn-fastpath = "mesh.cli:main"
 include = ["mesh*"]
 
 [tool.pytest.ini_options]
+pythonpath = ["."]
 testpaths = ["tests"]
 
 [tool.ruff]
