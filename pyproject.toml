@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mesh-vpn-fastpath"
+version = "0.1.0"
+description = "Read-only diagnostics and checklist utilities for keeping WireGuard-based mesh VPN (Tailscale / headscale) traffic on direct paths."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+    { name = "Jakub Jasionka" }
+]
+keywords = ["tailscale", "headscale", "wireguard", "mtu", "mesh-vpn"]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.3",
+    "mypy>=1.8",
+]
+
+[project.scripts]
+mesh-vpn-fastpath = "mesh.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["mesh*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
